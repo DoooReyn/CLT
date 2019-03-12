@@ -1,0 +1,5 @@
+安装工具后打开cmd，执行cmd命令，cd到res目录，执行以下两句
+
+set convert=C:\Program Files\ImageMagick-7.0.2-Q16\convert.exe
+for /f "tokens=*" %i in ('dir/s/b *.png') do "%convert%" %i -strip %i
+
