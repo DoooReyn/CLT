@@ -1,0 +1,108 @@
+>>>Date: 2019-01-19 14:10:32
+[string "game/views/LoadingLayer.lua"]:84: module 'game.views.EditorLayer' not found:
+	no field package.preload['game.views.EditorLayer'][string "game/views/EditorLayer.lua"]:43: '=' expected near 'listener'
+	no file '.\game\views\EditorLayer.lua'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\lua\game\views\EditorLayer.lua'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\lua\game\views\EditorLayer\init.lua'
+	no file 'C:\Program Files (x86)\Lua\5.1\lua\game\views\EditorLayer.luac'
+	no file '.\game\views\EditorLayer.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\game\views\EditorLayer.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\loadall.dll'
+	no file '.\game.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\game.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\loadall.dll'
+stack traceback:
+	[string "game/views/LoadingLayer.lua"]:84: in function 'onLoaded'
+	[string "game/views/LoadingLayer.lua"]:72: in function <[string "game/views/LoadingLayer.lua"]:65>
+<<<
+
+>>>Date: 2019-01-19 14:13:36
+[string "game/Game.lua"]:7: module 'game.views.LoadingLayer' not found:
+	no field package.preload['game.views.LoadingLayer'][string "game/views/LoadingLayer.lua"]:29: '=' expected near 'listener'
+	no file '.\game\views\LoadingLayer.lua'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\lua\game\views\LoadingLayer.lua'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\lua\game\views\LoadingLayer\init.lua'
+	no file 'C:\Program Files (x86)\Lua\5.1\lua\game\views\LoadingLayer.luac'
+	no file '.\game\views\LoadingLayer.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\game\views\LoadingLayer.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\loadall.dll'
+	no file '.\game.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\game.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\loadall.dll'
+stack traceback:
+	[string "game/Game.lua"]:7: in function 'run'
+	[string "E:/Gits/Clients/wudong2.0/ActionEditor/simulator/win32/../../src/main.lua"]:74: in function <[string "E:/Gits/Clients/wudong2.0/ActionEditor/simulator/win32/../../src/main.lua"]:58>
+	[C]: in function 'xpcall'
+	[string "E:/Gits/Clients/wudong2.0/ActionEditor/simulator/win32/../../src/main.lua"]:94: in main chunk
+<<<
+
+>>>Date: 2019-01-19 14:14:28
+[string "game/Game.lua"]:7: module 'game.views.LoadingLayer' not found:
+	no field package.preload['game.views.LoadingLayer'][string "game/views/LoadingLayer.lua"]:32: '=' expected near 'end'
+	no file '.\game\views\LoadingLayer.lua'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\lua\game\views\LoadingLayer.lua'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\lua\game\views\LoadingLayer\init.lua'
+	no file 'C:\Program Files (x86)\Lua\5.1\lua\game\views\LoadingLayer.luac'
+	no file '.\game\views\LoadingLayer.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\game\views\LoadingLayer.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\loadall.dll'
+	no file '.\game.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\game.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\loadall.dll'
+stack traceback:
+	[string "game/Game.lua"]:7: in function 'run'
+	[string "E:/Gits/Clients/wudong2.0/ActionEditor/simulator/win32/../../src/main.lua"]:74: in function <[string "E:/Gits/Clients/wudong2.0/ActionEditor/simulator/win32/../../src/main.lua"]:58>
+	[C]: in function 'xpcall'
+	[string "E:/Gits/Clients/wudong2.0/ActionEditor/simulator/win32/../../src/main.lua"]:94: in main chunk
+<<<
+
+>>>Date: 2019-01-19 14:15:13
+[string "game/Game.lua"]:7: module 'game.views.LoadingLayer' not found:
+	no field package.preload['game.views.LoadingLayer'][string "game/views/LoadingLayer.lua"]:33: '=' expected near 'end'
+	no file '.\game\views\LoadingLayer.lua'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\lua\game\views\LoadingLayer.lua'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\lua\game\views\LoadingLayer\init.lua'
+	no file 'C:\Program Files (x86)\Lua\5.1\lua\game\views\LoadingLayer.luac'
+	no file '.\game\views\LoadingLayer.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\game\views\LoadingLayer.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\loadall.dll'
+	no file '.\game.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\game.dll'
+	no file 'E:\Gits\Clients\wudong2.0\ActionEditor\simulator\win32\loadall.dll'
+stack traceback:
+	[string "game/Game.lua"]:7: in function 'run'
+	[string "E:/Gits/Clients/wudong2.0/ActionEditor/simulator/win32/../../src/main.lua"]:74: in function <[string "E:/Gits/Clients/wudong2.0/ActionEditor/simulator/win32/../../src/main.lua"]:58>
+	[C]: in function 'xpcall'
+	[string "E:/Gits/Clients/wudong2.0/ActionEditor/simulator/win32/../../src/main.lua"]:94: in main chunk
+<<<
+
+>>>Date: 2019-01-19 14:17:15
+[string "game/views/EditorLayer.lua"]:34: attempt to index global 'LoadingLayer' (a nil value)
+stack traceback:
+	[C]: in function 'require'
+	[string "game/views/LoadingLayer.lua"]:84: in function 'onLoaded'
+	[string "game/views/LoadingLayer.lua"]:72: in function <[string "game/views/LoadingLayer.lua"]:65>
+<<<
+
+>>>Date: 2019-01-19 14:18:02
+[string "game/views/EditorLayer.lua"]:43: attempt to index field 'handler' (a nil value)
+stack traceback:
+	[string "game/views/EditorLayer.lua"]:20: in function 'initUI'
+	[string "game/views/LayerBase.lua"]:25: in function <[string "game/views/LayerBase.lua"]:19>
+	[C]: in function 'addChild'
+	[string "game/views/LoadingLayer.lua"]:85: in function 'onLoaded'
+	[string "game/views/LoadingLayer.lua"]:72: in function <[string "game/views/LoadingLayer.lua"]:65>
+<<<
+
+>>>Date: 2019-01-19 15:25:49
+[string "game/views/EditorLayer.lua"]:54: attempt to index field 'offset' (a nil value)
+stack traceback:
+<<<
+
+>>>Date: 2019-01-19 15:42:11
+[string "game/views/EditorLayer.lua"]:441: attempt to index global 'actInfo' (a nil value)
+stack traceback:
+	[string "game/views/EditorLayer.lua"]:320: in function 'onTouchCallBack_'
+	[string "cclibs/framework/extends/UIWidget.lua"]:36: in function <[string "cclibs/framework/extends/UIWidget.lua"]:34>
+<<<
+

@@ -1,0 +1,13 @@
+<Solution>
+  <PropertyGroup Name="cocostudio" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="csb">
+          <Project Name="EditorLayer.csd" Type="Layer" />
+          <Project Name="LoadingLayer.csd" Type="Layer" />
+        </Folder>
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
