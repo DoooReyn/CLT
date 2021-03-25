@@ -18,8 +18,8 @@ class LuaSyntaxChecker:
     def statistic(self):
         if len(self.__errors) > 0:
             print("All done! Errors list below:")
-        for i, v in enumerate(self.__errors):
-            print(v)
+            for i, v in enumerate(self.__errors):
+                print(v)
         else:
             print("All done! Everything is ok!")
 
