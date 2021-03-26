@@ -3,6 +3,7 @@
 
 import os
 import sys
+from enum import Enum
 from PIL import Image
 
 HELP = """
@@ -140,6 +141,9 @@ class FntPage:
         self.id = 0
         self.file = "temp.png"
 
+    def setFile(self, file):
+        self.file = os.path.splitext(os.path.basename(file))[0] + ".png"
+
     def text(self):
         return "page id=%s file=\"%s\"" % (self.id, self.file)
 
@@ -216,6 +220,7 @@ class FntWriter:
         self.__litteras.append(char)
 
     def save(self, filename):
+        self.__page.setFile(filename)
         text = []
         text.append(self.__info.text())
         text.append(self.__common.text())
@@ -226,15 +231,20 @@ class FntWriter:
         with open(filename, "wt") as f:
             f.writelines(text)
 
+class Alignment(Enum):
+    Center = 0
+    Top = 1
+    Bottom = 2
 
 class BMFontGenerator:
-    def __init__(self, where, filename="temp", max_width=1024):
+    def __init__(self, where, filename="temp", max_width=256, alignment=Alignment.Center):
         if not os.path.isdir(where):
             print("无效的图片字路径: %s" % where)
             sys.exit(-1)
 
         os.makedirs("./output", exist_ok=True)
 
+        self.__alignment = alignment
         self.__max_width = min(2048, max_width)
         self.__filename = "./output/%s.png" % filename
         self.__fntname = "./output/%s.fnt" % filename
@@ -243,6 +253,7 @@ class BMFontGenerator:
         self.__width = 0
         self.__height = 0
         self.__total_width = 0
+        self.__lines = 1
         self.__read_textures(where)
         self.__parse_textures()
         self.__merge_textures()
@@ -259,53 +270,71 @@ class BMFontGenerator:
             sys.exit(-1)
 
     def __parse_textures(self):
+        self.__textures_in_line = []
+        self.__lines = 1
         for path, image in self.__textures:
             self.__width = max(self.__width, image.width)
             self.__height = max(self.__height, image.height)
             self.__total_width += image.width
+            if self.__total_width > self.__max_width:
+                self.__total_width = image.width
+                self.__lines += 1
+            if len(self.__textures_in_line) < self.__lines:
+                self.__textures_in_line.append([])
+            self.__textures_in_line[self.__lines-1].append((path, image))
+        self.__height *= self.__lines
+        self.__width = self.__lines > 1 and self.__max_width or self.__total_width
 
     def __merge_textures(self):
         writer = FntWriter()
         writer.setFont(size=self.__height)
         writer.setCount(len(self.__textures))
-        writer.setSize(self.__total_width, self.__height)
+        writer.setSize(self.__width, self.__height)
 
-        merge = Image.new("RGBA", (self.__total_width,
-                                   self.__height), (255, 255, 255, 255))
+        size = (self.__width, self.__height)
+        channel = (255, 255, 255, 0)
+        merge = Image.new("RGBA", size, channel)
         x = 0
         y = 0
-        for path, image in self.__textures:
-            img = image.crop((0, 0, image.width, image.height))
-            region = (x, y, image.width+x, image.height+y)
-            merge.paste(img, region)
-            base = os.path.splitext(os.path.basename(path))[0]
-            code = base
-            if len(base) > 1:
-                val = SPECIAL_CHARACTERS.get(base)
-                if val:
-                    code = val
-                    # print(base, code, ord(code))
-            else:
-                # print(base, code, ord(code))
-                pass
-
-            try:
-                char = FntChar()
-                char.id = ord(code)
-                char.width = image.width
-                char.height = image.height
-                char.x = x
-                char.y = y
-                char.xoffset = 0
-                char.yoffset = 0
-                char.xadvance = char.width
-                char.chnl = 15
-                writer.addChar(char.text())
-                x += img.width
-                print("正在添加字符: %s => %s" % (code, char.id))
-            except Exception as err:
-                print("无效的字符: %s" % base)
-
+        one_height = int(self.__height / self.__lines)
+        for i, line in enumerate(self.__textures_in_line):
+            for j, v in enumerate(line):
+                y = int(i * one_height)
+                (path, image) = v
+                img = image.crop((0, 0, image.width, image.height))
+                if x+img.width > self.__max_width:
+                    x = 0
+                _y = int(y + one_height - image.height)
+                region = (x, y, image.width+x, y + image.height)
+                merge.paste(img, region)
+                base = os.path.splitext(os.path.basename(path))[0]
+                code = base
+                if len(base) > 1:
+                    val = SPECIAL_CHARACTERS.get(base)
+                    if val:
+                        code = val
+                try:
+                    char = FntChar()
+                    char.id = ord(code)
+                    char.width = image.width
+                    char.height = image.height
+                    char.x = x
+                    char.y = y
+                    char.xoffset = 0
+                    if self.__alignment == Alignment.Center:
+                        char.yoffset = int((one_height - image.height) / 2)
+                    elif self.__alignment == Alignment.Top:
+                        char.yoffset = 0
+                    else:
+                        char.yoffset = int((one_height - image.height))
+                    char.xadvance = char.width
+                    char.chnl = 15
+                    writer.addChar(char.text())
+                    x += img.width
+                    print("正在添加字符: %s => %s 位置: %s, %s" %
+                          (code, char.id, x, y))
+                except Exception as err:
+                    print("无效的字符: %s" % base)
         merge.save(self.__filename)
         writer.save(self.__fntname)
         print("BMFont已生成: %s" % self.__fntname)
